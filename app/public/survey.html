@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Survey</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+	<style type="">
+		th, td {
+			text-align: center;
+			padding: 10px 13px;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<h1>Survey</h1><hr>
+	<form>
+		<div>
+			<label for="name">Name</label><br>
+			<input type="text" name="" id="name"><i><span class="error"></span></i>
+		</div>
+		<div>
+			<label for="profile_picture">Profile Picture </label><i> (Provide an image URL, otherwise a random picture will be used)</i><br>
+			<input type="text" name="" id="profile_picture">
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th style="visibility: hidden"></th>
+					<th>Strongly Disagree</th>
+					<th>Disagree</th>
+					<th>Neutral</th>
+					<th>Agree</th>
+					<th>Strongly Agree</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Programming is so much fun!</td>
+					<td><input type="radio" name="question1" value=1></td>
+					<td><input type="radio" name="question1" value=2></td>
+					<td><input type="radio" name="question1" value=3></td>
+					<td><input type="radio" name="question1" value=4></td>
+					<td><input type="radio" name="question1" value=5></td>
+				</tr>
+				<tr>
+					<td>Back-end programming is more difficult than front-end programming.</td>
+					<td><input type="radio" name="question2" value=1></td>
+					<td><input type="radio" name="question2" value=2></td>
+					<td><input type="radio" name="question2" value=3></td>
+					<td><input type="radio" name="question2" value=4></td>
+					<td><input type="radio" name="question2" value=5></td>
+				</tr>
+				<tr>
+					<td>Back-end is more enjoyable than front-end.</td>
+					<td><input type="radio" name="question3" value=1></td>
+					<td><input type="radio" name="question3" value=2></td>
+					<td><input type="radio" name="question3" value=3></td>
+					<td><input type="radio" name="question3" value=4></td>
+					<td><input type="radio" name="question3" value=5></td>
+				</tr>
+				<tr>
+					<td>I struggle with semantics rather than syntax.</td>
+					<td><input type="radio" name="question4" value=1></td>
+					<td><input type="radio" name="question4" value=2></td>
+					<td><input type="radio" name="question4" value=3></td>
+					<td><input type="radio" name="question4" value=4></td>
+					<td><input type="radio" name="question4" value=5></td>
+				</tr>
+				<tr>
+					<td>Debugging is frustrating, but very rewarding.</td>
+					<td><input type="radio" name="question5" value=1></td>
+					<td><input type="radio" name="question5" value=2></td>
+					<td><input type="radio" name="question5" value=3></td>
+					<td><input type="radio" name="question5" value=4></td>
+					<td><input type="radio" name="question5" value=5></td>
+				</tr>
+				<tr>
+					<td>Pseudo-coding is very helpful before writing real code.</td>
+					<td><input type="radio" name="question6" value=1></td>
+					<td><input type="radio" name="question6" value=2></td>
+					<td><input type="radio" name="question6" value=3></td>
+					<td><input type="radio" name="question6" value=4></td>
+					<td><input type="radio" name="question6" value=5></td>
+				</tr>
+				<tr>
+					<td>Programming requires creativity</td>
+					<td><input type="radio" name="question7" value=1></td>
+					<td><input type="radio" name="question7" value=2></td>
+					<td><input type="radio" name="question7" value=3></td>
+					<td><input type="radio" name="question7" value=4></td>
+					<td><input type="radio" name="question7" value=5></td>
+				</tr>
+				<tr>
+					<td>Programming requires logical thinking.</td>
+					<td><input type="radio" name="question8" value=1></td>
+					<td><input type="radio" name="question8" value=2></td>
+					<td><input type="radio" name="question8" value=3></td>
+					<td><input type="radio" name="question8" value=4></td>
+					<td><input type="radio" name="question8" value=5></td>
+				</tr>
+				<tr>
+					<td>I wish I learned how to code/program earlier.</td>
+					<td><input type="radio" name="question9" value=1></td>
+					<td><input type="radio" name="question9" value=2></td>
+					<td><input type="radio" name="question9" value=3></td>
+					<td><input type="radio" name="question9" value=4></td>
+					<td><input type="radio" name="question9" value=5></td>
+				</tr>
+				<tr>
+					<td>More students in high school and even middle school should be taught coding/programming.</td>
+					<td><input type="radio" name="question10" value=1></td>
+					<td><input type="radio" name="question10" value=2></td>
+					<td><input type="radio" name="question10" value=3></td>
+					<td><input type="radio" name="question10" value=4></td>
+					<td><input type="radio" name="question10" value=5></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<button id="submit">Submit</button>
+	</form>
+</div>
+<script type="text/javascript">
+	// Clicking on the cell of the radio button will also select it
+	$("tr td").not(":first").click(function() {
+		var radio = $(this).children("input");
+		radio.prop("checked", true);
+	});
+
+	$("button").click(function() {
+		var name = $("#name").val().trim();
+		if(name == "") {
+			$(".error").css("color", "red").text("   Please fill in field");
+			return false;
+		}
+		var picture = $("#profile_picture").val().trim();
+		if(picture == "")
+			picture = "http://lorempixel.com/300/400";
+
+		var choices = [];
+		for(var i = 1; i <= 10; i++) {
+			var question = "question" + i;
+			choices.push(parseInt($("input[name=" + question + "]:checked").attr("value")));
+		}
+		console.log(choices);
+		return false;
+	})
+</script>
+</body>
+</html>
