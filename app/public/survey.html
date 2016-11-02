@@ -145,9 +145,19 @@
 		var choices = [];
 		for(var i = 1; i <= 10; i++) {
 			var question = "question" + i;
-			choices.push(parseInt($("input[name=" + question + "]:checked").attr("value")));
+			var score = parseInt($("input[name=" + question + "]:checked").val());
+			choices.push(score);
 		}
 		console.log(choices);
+
+		var user = {
+			name: name,
+			image: picture,
+			selected: choices
+		}
+
+		$.post(window.location.origin + "/api/friends", user);
+		// window.location.href = window.location.origin + "/api/friends";
 		return false;
 	})
 </script>
