@@ -2,12 +2,12 @@ var friends = require("../data/friends.js"); // Array holding all current 'frien
 
 module.exports = function(app) {
 	app.get("/api/friends", function(req, res) {
-		res.send(friends);
+		res.json(friends);
 	});
 
 	app.post("/api/friends", function(req, res) {
 		convertStringtoInt(req.body.selected);
-		console.log(req.body);
+
 		var bestMatch = null;
 		var minDiff = null;
 	
@@ -28,9 +28,8 @@ module.exports = function(app) {
 				minDiff = diff;
 			}
 		}
-		console.log(bestMatch);
 		friends.push(req.body);
-		// console.log(friends);
+		res.send(bestMatch);
 	});
 }
 

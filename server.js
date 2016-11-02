@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var path = require("path");
 
 var app = express();
-var port = 8080;
+var port = 8080 || process.env.PORT;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -13,6 +13,4 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 require("./app/routing/api-routes.js")(app);
 require("./app/routing/html-routes.js")(app);
 
-app.listen(8080, function() {
-	console.log("app listening on PORT: " + port);
-});
+app.listen(port);

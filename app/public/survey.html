@@ -6,12 +6,24 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 	<!-- JQuery -->
-	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>\
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 	<style type="">
 		th, td {
 			text-align: center;
 			padding: 10px 13px;
 			border: 1px solid black;
+		}
+
+		#submit {
+			margin-top: 10px;
+		}
+
+		#friendPicture {
+			width:80%;
+			height:500px;
 		}
 	</style>
 </head>
@@ -122,8 +134,21 @@
 			</tbody>
 		</table>
 
-		<button id="submit">Submit</button>
+		<button class="btn btn-danger pull-right" id="submit">Submit</button>
 	</form>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">Friend Found!!</h1>
+      </div>
+      <div class="modal-body">
+      	<h2 id="friendName"></h2>
+      	<img src="" id="friendPicture">
+      </div>
+    </div>
+  </div>
 </div>
 <script type="text/javascript">
 	// Clicking on the cell of the radio button will also select it
@@ -148,18 +173,21 @@
 			var score = parseInt($("input[name=" + question + "]:checked").val());
 			choices.push(score);
 		}
-		console.log(choices);
-
 		var user = {
 			name: name,
 			image: picture,
 			selected: choices
 		}
 
-		$.post(window.location.origin + "/api/friends", user);
-		// window.location.href = window.location.origin + "/api/friends";
+		$.post(window.location.origin + "/api/friends", user, function(data) {
+			var name = data.name;
+			var src = data.image;
+			$("#friendName").text(name);
+			$("#friendPicture").attr("src", src);
+			$('#exampleModal').modal('show');
+		});
 		return false;
-	})
+	});
 </script>
 </body>
 </html>
